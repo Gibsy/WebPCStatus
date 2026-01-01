@@ -1,6 +1,6 @@
 # WebPC Status for Neocities
 
-This is a simple project to track the status of a PC and display it on a Neocities web page.  
+This is a simple project to track the online/offline status of your PC and display it on a Neocities web page.  
 The Python script updates `status.json` on Neocities, and the HTML page reads this file to show whether the PC is online or offline.
 
 ---
