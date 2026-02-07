@@ -5,17 +5,6 @@ The Python script updates `status.json` on Neocities, and the HTML page reads th
 
 ---
 
-## Features
-
-- Python script `main.py` updates status every 30 seconds.
-- Example HTML page (`example.html`) shows:
-  - Online/Offline status
-  - Time since PC online/offline
-  - Offline is detected if the status hasn't updated for more than 1 minute.
-- Easy to use, lots of room for improvement!
-
----
-
 ## Quick guide
 
 ### 1. Clone the repository
