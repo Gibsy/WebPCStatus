@@ -7,10 +7,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-API_KEY = os.getenv("API_KEY")                        # neocities API key
-SITE = os.getenv("SITE")                              # neocities login
+API_KEY = os.getenv("API_KEY")                        
+SITE = os.getenv("SITE")                              
 STATUS_FILE = "status.json"
-INTERVAL = 30
+INTERVAL = 30               # you can change to 60 (1 minute)
 
 start_time = datetime.now(timezone.utc)
 
