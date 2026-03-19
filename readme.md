@@ -30,4 +30,11 @@ python main.py
 ```
 ---
 
-Then just add status.js to your website 
+Then just add status.js and pcStatus in HTML to your website (look in example.html)
+
+```html
+    <div style="margin-left:20px;margin-top:20px;background:black;width:375px;padding:10px;border:3px solid gray;">
+        <h1 style="color:#FFFFFF;">STATUS:</h1>
+        <h2 id="pcStatus" style="color:white;">Loading...</h2>
+    </div>
+```
