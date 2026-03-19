@@ -20,8 +20,10 @@ pip install -r requirements.txt
 ### 3. Create a .env file in the project root
 ```bash
 API_KEY=YOUR_NEOCITIES_API_KEY
-SITE=YOUR_SITE_NAME
+SITE=YOUR_WEBSITE_NAME
 ```
+get your API here - https://neocities.org/settings/YOURWEBSITENAME#api_key
+
 ### 4. Run the Python script
 ```bash
 python main.py
