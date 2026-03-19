@@ -28,4 +28,4 @@ python main.py
 ```
 ---
 
-Then just add status.js to your website, you can check for example [here](https://github.com/Gibsy/gibsy.github.io) (use DevTools)
+Then just add status.js to your website 
