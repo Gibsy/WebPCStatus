@@ -9,7 +9,9 @@ load_dotenv()
 API_KEY = os.getenv("API_KEY")
 
 STATUS_FILE = "status.json"
-INTERVAL = 180 # 
+INTERVAL = 180  # You can change this, but 180 seconds is optimal to avoid using the API too frequently
+                # In status.js, it marks you as offline if status.json hasn't been updated for 240 seconds
+                # You can change that value as well if you want to
 
 start_time = datetime.now(timezone.utc)
 
