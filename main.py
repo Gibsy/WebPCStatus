@@ -6,35 +6,47 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
+API_KEY = os.getenv("API_KEY")
 
-API_KEY = os.getenv("API_KEY")                        
-SITE = os.getenv("SITE")                              
 STATUS_FILE = "status.json"
-INTERVAL = 30               # you can change to 60 (1 minute)
+INTERVAL = 180 # 
 
 start_time = datetime.now(timezone.utc)
 
-def upload_status(online=True):
+
+def upload_to_neocities(path):
+    try:
+        with open(path, "rb") as f:
+            r = requests.post(
+                "https://neocities.org/api/upload",
+                headers={"Authorization": f"Bearer {API_KEY}"},
+                files={os.path.basename(path): f},
+                timeout=10
+            )
+        return r.status_code == 200
+    except Exception as e:
+        print("Neocities upload error:", e)
+        return False
+
+
+def update_all():
     now = datetime.now(timezone.utc)
-    data = {
-        "online": online,
+
+    status = {
+        "online": True,
         "last_update": now.isoformat(),
         "online_since": start_time.isoformat()
     }
 
     with open(STATUS_FILE, "w", encoding="utf-8") as f:
-        json.dump(data, f)
+        json.dump(status, f, ensure_ascii=False, indent=2)
 
-    with open(STATUS_FILE, "rb") as f:
-        files = {"status.json": f}
-        headers = {"Authorization": f"Bearer {API_KEY}"}
-        r = requests.post("https://neocities.org/api/upload", headers=headers, files=files)
-        print(f"[{now}] Uploaded status.json, response code: {r.status_code}")
+    upload_to_neocities(STATUS_FILE)
+
+    print(f"[{datetime.now().strftime('%H:%M:%S')}] STATUS uploaded")
+
 
 if __name__ == "__main__":
     while True:
-        try:
-            upload_status(True)
-        except Exception as e:
-            print("Error uploading:", e)
+        update_all()
         time.sleep(INTERVAL)
